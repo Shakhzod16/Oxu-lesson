@@ -1,0 +1,191 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio Website</title>
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+	</head>
+	<body>
+		<nav>
+			<div class="nav-box">
+				<div class="logo">
+					<h1>Shazod_Dev</h1>
+				</div>
+
+				<div class="nav-container">
+					<div class="links">
+						<a href="#Home" class="link">Home</a>
+						<a href="#skills" class="link">Skills</a>
+						<a href="#intro" class="link">Introduction</a>
+						<a href="#services" class="link">Services</a>
+						<a href="#contact" class="link">Contact</a>
+					</div>
+
+					<button id="hire-me" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">
+						<i class="fa-solid fa-paper-plane"></i> Contact Us
+					</button>
+
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="hamburg"
+						height="32"
+						width="34"
+						viewBox="0 0 448 512"
+						onclick="hamburg()">
+						<path
+							d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+					</svg>
+				</div>
+			</div>
+
+			<div class="dropdown" id="dropdown">
+				<a href="#Home" class="link">Home</a>
+				<a href="#skills" class="link">Skills</a>
+				 <a href="#intro" class="link">Introduction</a> -->
+				<!-- <a href="#services" class="link">Services</a>
+				<a href="#contact" class="link">Contact</a>
+
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="cancel"
+					height="36"
+					width="32"
+					viewBox="0 0 384 512"
+					onclick="cancel()">
+					<path
+						d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+				</svg>
+			</div>
+		</nav>
+
+		<script>
+			function hamburg() {
+				document.getElementById('dropdown').classList.add('active');
+			}
+
+			function cancel() {
+				document.getElementById('dropdown').classList.remove('active');
+			}
+		</script>
+
+		<section>
+			<div class="content" id="Home">
+				<div class="main-content">
+					<h1 data-aos="fade-right" data-aos-duration="1500">Hi! I Am</h1>
+					<span data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">Bekhruz</span>
+					<span data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">Mobilograf</span>
+					<p data-aos="flip-up" data-aos-duration="1500" data-aos-delay="400">
+						Sahifangiz uchun kerakli foto va videolarni professional darajada yarataman. Kontentingiz orqali ko‘proq
+						auditoriya jalb qilib, brendingizni ishonchli va jozibador qilaman. Ijtimoiy tarmoqlarda yorqin ko‘rinish va
+						kuchli ta’sir qoldirish — mening ishim!
+					</p>
+					<div class="buttons">
+						<div class="media-icons">
+							<a href="#" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1200"
+								><i class="fab fa-facebook-f"></i
+							></a>
+							<a href="#" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1300"
+								><i class="fab fa-instagram"></i
+							></a>
+							<a href="#" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1400"
+								><i class="fab fa-twitter"></i
+							></a>
+							<a href="#" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1500"
+								><i class="fab fa-github"></i
+							></a>
+						</div>
+						<button>Contact Us</button>
+					</div>
+				</div> -->
+				<!-- <div class="image">
+					<img src="/photo_2025-04-19_18-23-09.jpg" data-aos="zoom-out" data-aos-duration="2000" />
+				</div> -->
+			<!-- </div>
+		</section> -->
+
+		<!-- snake  -->
+
+		<!-- <div class="snake">
+
+        </div>
+	</body>
+</html> -->
+
+
+<html lang="uz">
+// draw head at current pos
+const pos = getPosAtDistance(dist);
+drawHead(pos.x, pos.y, pos.angle);
+
+
+// small guide: start corner
+ctx.fillStyle = 'rgba(255,255,255,0.03)';
+ctx.fillRect(padding, padding, canvas.width - padding*2, canvas.height - padding*2);
+}
+
+
+function drawHead(cx, cy, angle){
+ctx.save();
+ctx.translate(cx, cy);
+ctx.rotate(angle);
+// draw rectangle centered so it sits on the path
+ctx.fillStyle = '#ffd166';
+ctx.fillRect(-headSize/2, -headSize/2, headSize, headSize);
+// nose/eye to indicate forward direction
+ctx.fillStyle = '#222';
+ctx.fillRect(headSize/4, -headSize/6, headSize/6, headSize/3);
+ctx.restore();
+}
+
+
+function update(dt){
+// advance distance along path by speed * dt * direction
+dist += direction * speed * dt;
+// wrap
+dist = ((dist % totalLen) + totalLen) % totalLen;
+}
+
+
+function loop(now){
+const dt = (now - last) / 1000;
+last = now;
+update(dt);
+draw();
+requestAnimationFrame(loop);
+}
+
+
+// allow click to toggle direction
+canvas.addEventListener('click', ()=>{ direction *= -1; });
+
+
+// resize canvas responsively
+function resize(){
+// maintain CSS pixel ratio
+const ratio = Math.min(window.devicePixelRatio || 1, 2);
+canvas.width = Math.floor(Math.max(300, window.innerWidth * 0.75));
+canvas.height = Math.floor(Math.max(240, window.innerHeight * 0.6));
+canvas.style.width = canvas.width + 'px';
+canvas.style.height = canvas.height + 'px';
+initPath();
+}
+
+
+window.addEventListener('resize', ()=>{ resize(); });
+
+
+// init
+resize();
+requestAnimationFrame(loop);
+
+
+// helpful instructions in console
+console.log("Click canvas to toggle clockwise/counter-clockwise. Use sliders to change speed and padding.");
+</script>
+</body>
+</html>

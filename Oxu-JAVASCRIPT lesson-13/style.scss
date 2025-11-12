@@ -1,0 +1,531 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f6f6f6;
+	font-family: 'Open Sans', sans-serif;
+	width: 1440px;
+	margin: 0 auto;
+}
+
+/* Navbar */
+.nav {
+	width: 1440px;
+	height: 137px;
+	border-bottom: 1px solid #000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 133px;
+	position: relative;
+
+	.text1 {
+		display: flex;
+		align-items: center;
+		gap: 82px;
+
+		a {
+			font-weight: 400;
+			font-size: 16px;
+			color: #323232;
+			line-height: 150%;
+			text-decoration: none;
+		}
+	}
+
+	.logo {
+		width: 87px;
+		height: 86px;
+		margin: 0 270px;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	// /* Burger menu uchun (mobilda ko‘rinadi) */
+	.burger {
+		display: none;
+		cursor: pointer;
+
+		div {
+			width: 25px;
+			height: 3px;
+			background-color: black;
+			margin: 5px 0;
+			transition: all 0.3s ease;
+		}
+	}
+
+	.nav-links {
+		position: absolute;
+		top: 137px;
+		left: 0;
+		width: 100%;
+		background-color: #a1b29f;
+		overflow: hidden;
+		height: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		transition: height 0.3s ease;
+
+		a {
+			color: white;
+			text-decoration: none;
+			font-size: 16px;
+			margin: 15px 0;
+		}
+	}
+
+	.nav-links.active {
+		height: auto;
+		padding: 15px 0;
+	}
+
+	.burger.toggle div:nth-child(1) {
+		transform: rotate(-45deg) translate(-5px, 6px);
+	}
+	.burger.toggle div:nth-child(2) {
+		opacity: 0;
+	}
+	.burger.toggle div:nth-child(3) {
+		transform: rotate(45deg) translate(-5px, -6px);
+	}
+}
+
+/* Main section */
+
+.Main-section {
+	height: 774px;
+	width: 1440px;
+	display: flex;
+	align-items: center;
+	padding: 0 133px;
+
+	.left-img {
+		width: 719px;
+		height: 774px;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.right-text {
+		display: flex;
+		flex-direction: column;
+		padding-left: 37px;
+
+		p {
+			font-weight: 300;
+			font-size: 16px;
+			color: #323232;
+			line-height: 150%;
+		}
+
+		h1 {
+			font-family: 'Tenor Sans', sans-serif;
+			font-weight: 400;
+			font-size: 48px;
+			color: #57463a;
+			line-height: 120%;
+			margin-top: 17px;
+		}
+
+		h6 {
+			font-weight: 300;
+			font-size: 18px;
+			color: #323232;
+			line-height: 150%;
+			margin-top: 40px;
+		}
+
+		button {
+			width: 245px;
+			height: 60px;
+			background-color: #a1b29f;
+			color: #f6f6f6;
+			border: none;
+			margin-top: 70px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		.btn {
+			margin-top: 94px;
+			display: flex;
+			gap: 40px;
+			justify-content: flex-start;
+
+			img {
+				width: 30px;
+				height: auto;
+			}
+		}
+	}
+}
+
+/* Media query: mobil */
+
+@media screen and (max-width: 576px) {
+	body {
+		width: 100%;
+	}
+
+	.nav {
+		width: 100%;
+		height: 60px;
+		padding: 0 20px;
+		justify-content: flex-end;
+
+		.text1,
+		.logo {
+			display: none; /* desktop linklar yashirilsin */
+		}
+
+		.burger {
+			display: block;
+		}
+
+		.nav-links {
+			top: 60px;
+		}
+	}
+
+	.Main-section {
+		width: 100%;
+		flex-direction: column;
+		height: auto;
+		padding: 20px;
+
+		/* Avval rasm, keyin matn */
+		.left-img {
+			order: -1; /* rasm birinchi bo‘lsin */
+			width: 100%;
+			height: auto;
+			margin-bottom: 20px;
+		}
+
+		.right-text {
+			padding-left: 0 !important;
+			text-align: center;
+
+			.btn {
+				justify-content: center;
+				margin-left: 0 !important;
+			}
+		}
+	}
+}
+
+// section - 1
+
+.section-2 {
+	margin-top: 160px;
+	margin-bottom: 150px;
+	padding-left: 135px;
+
+	h1 {
+		font-family: Tenor Sans;
+		font-weight: 400;
+		font-style: Regular;
+		font-size: 48px;
+		color: #57463a;
+		line-height: 120%;
+		letter-spacing: 0%;
+		// text-align: center;
+	}
+
+	.cards {
+		margin-top: 100px;
+		display: flex;
+		align-items: center;
+		gap: 100px;
+
+		.card {
+			p {
+				font-family: Open Sans;
+				font-weight: 300;
+				font-style: Light;
+				font-size: 18px;
+				color: #323232;
+				line-height: 150%;
+				letter-spacing: 0%;
+				text-align: center;
+			}
+			width: 300px;
+			border-bottom: 3px solid #715b4b;
+		}
+	}
+	@media screen and (max-width: 768px) {
+		.section-2 {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			gap: 20px;
+
+			.cards {
+				display: none;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 20px;
+
+				.card {
+					max-width: 100%;
+					display: block;
+					flex-direction: column;
+					align-items: center;
+				}
+			}
+		}
+	}
+}
+
+// section - 3
+
+.section-3 {
+	margin-left: 140px;
+	h1 {
+		font-family: Tenor Sans;
+		font-weight: 400;
+		font-style: Regular;
+		font-size: 48px;
+		color: #57463a;
+		line-height: 150%;
+		letter-spacing: 0%;
+	}
+	.cover-section {
+		width: 1170px;
+		height: 500px;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-top: 100px;
+		.card {
+			align-items: center;
+			font-family: Open Sans;
+			font-weight: 300;
+			font-style: Light;
+			font-size: 18px;
+			color: #323232;
+			line-height: 103%;
+			letter-spacing: 0%;
+			text-align: center;
+			border: 3px solid black;
+			padding: 70px;
+		}
+	}
+}
+
+// section - 4
+
+.section-4 {
+	margin-top: 160px;
+	h1 {
+		font-family: Tenor Sans;
+		font-weight: 400;
+		font-style: Regular;
+		font-size: 48px;
+		color: #57463a;
+		line-height: 150%;
+		letter-spacing: 0%;
+		margin-left: 140px;
+	}
+	.section-cover {
+		margin-top: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.left-imgs {
+			width: 704px;
+			height: 475px;
+		}
+		.right-texts {
+			padding-left: 30px;
+			background-color: #ebeeeb;
+			width: 704px;
+			height: 475px;
+			h2 {
+				font-family: Tenor Sans;
+				font-weight: 400;
+				font-style: Regular;
+				font-size: 24px;
+				color: #000;
+				line-height: 150%;
+				letter-spacing: 0%;
+			}
+			p {
+				font-family: Open Sans;
+				font-weight: 300;
+				font-style: Light;
+				font-size: 18px;
+				color: #000;
+				line-height: 150%;
+				letter-spacing: 0%;
+				margin-top: 40px;
+			}
+			button {
+				width: 245px;
+				height: 60px;
+				border: none;
+				background-color: #a1b29f;
+				font-family: Open Sans;
+				font-weight: 400;
+				font-style: Regular;
+				font-size: 16px;
+				color: #f6f6f6;
+				line-height: 150%;
+				letter-spacing: 0%;
+				text-align: center;
+				margin-top: 52px;
+			}
+		}
+	}
+}
+
+// section - 5
+
+.section-5 {
+	padding-top: 200px;
+	h1 {
+		font-family: Tenor Sans;
+		font-weight: 400;
+		font-style: Regular;
+		font-size: 48px;
+		color: #57463a;
+		line-height: 150%;
+		letter-spacing: 0%;
+		margin-bottom: 100px;
+		padding-left: 140px;
+	}
+	.section-cover {
+		// margin-top: 100px;
+		display: flex;
+
+		align-items: center;
+
+		.right {
+			width: 720px;
+			height: 536px;
+		}
+		#right {
+			width: 720px;
+			height: 536px;
+		}
+		.left {
+			padding-left: 30px;
+			background-color: #e3dace;
+			width: 720px;
+			height: 536px;
+			padding-top: 100px;
+			h2 {
+				font-family: Tenor Sans;
+				font-weight: 400;
+				font-style: Regular;
+				font-size: 24px;
+				color: #000;
+				line-height: 150%;
+				letter-spacing: 0%;
+			}
+			P {
+				font-family: Open Sans;
+				font-weight: 300;
+				font-style: Light;
+				font-size: 18px;
+				color: #000;
+				line-height: 150%;
+				letter-spacing: 0%;
+				margin-top: 40px;
+			}
+			button {
+				width: 245px;
+				height: 60px;
+				border: none;
+				background-color: #a1b29f;
+				font-family: Open Sans;
+				font-weight: 400;
+				font-style: Regular;
+				font-size: 16px;
+				color: #f6f6f6;
+				line-height: 150%;
+				letter-spacing: 0%;
+				text-align: center;
+				margin-top: 55px;
+			}
+		}
+	}
+}
+
+// section - 6
+
+.section-6 {
+	margin: 0 auto;
+	padding-left: 140px;
+	margin-top: 201px;
+	.frame {
+		border: 7px solid #a1b29f;
+		width: 1160px;
+		height: 590px;
+
+		h1 {
+			font-family: Tenor Sans;
+			font-weight: 400;
+			font-style: Regular;
+			font-size: 48px;
+			color: #57463a;
+			line-height: 150%;
+			letter-spacing: 0%;
+			text-align: center;
+			margin-top: 106px;
+		}
+		p {
+			font-family: Open Sans;
+			font-weight: 300;
+			font-style: Light;
+			font-size: 24px;
+			color: #000;
+			line-height: 150%;
+			letter-spacing: 0%;
+			text-align: center;
+			margin-top: 40px;
+		}
+		.img {
+			margin-left: 900px;
+			width: 86px;
+			height: 87px;
+		}
+	}
+}
+
+// <!-- Footer Section -->
+
+.section-7 {
+	margin-top: 210px;
+	width: 1440px;
+	height: 380px;
+	background-color: #715b4b;
+	display: flex;
+	padding-left: 140px;
+	justify-content: space-between;
+
+	.cars1 {
+		margin-top: 138px;
+		p {
+			font-family: Open Sans;
+			font-weight: 300;
+			font-style: Light;
+			font-size: 16px;
+			color: #f6f6f6;
+			line-height: 150%;
+			letter-spacing: 0%;
+		}
+	}
+}

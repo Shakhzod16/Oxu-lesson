@@ -1,0 +1,266 @@
+onclick — bu hodisa (event) bo‘lib, foydalanuvchi elementni bosganda (click) bajariladigan funksiyani ishga tushiradi.
+Ya’ni — “bu tugmani bossang, mana bu ishni qil” degandek.
+
+🧠 Oddiy misol
+
+HTML:
+
+<button onclick="alert('Salom, dunyo!')">Bos!</button>
+
+
+➡️ Bu yerda foydalanuvchi tugmani bossa, brauzerda “Salom, dunyo!” degan alert oynasi chiqadi.
+
+🔹 onclick ni 3 xil usulda ishlatish mumkin
+1️⃣ HTML ichida yozish (oddiy usul)
+<button onclick="console.log('Bosildi!')">Bos!</button>
+
+
+Bu eng oson usul, lekin kodni HTML bilan aralashtirib yuboradi, shuning uchun kichik loyihalar uchun yaxshi.
+
+2️⃣ JavaScript orqali yozish (tavsiya qilinadigan usul)
+
+HTML:
+
+<button id="btn">Bos!</button>
+<p id="matn">Salom!</p>
+
+
+JS:
+
+let tugma = document.getElementById('btn');
+let matn = document.getElementById('matn');
+
+tugma.onclick = function() {
+  matn.textContent = 'Tugma bosildi!';
+};
+
+
+➡️ Tugmani bosganda <p> ichidagi matn o‘zgaradi.
+
+3️⃣ addEventListener() bilan ishlatish (eng to‘g‘ri usul)
+
+HTML:
+
+<button id="btn">Bos!</button>
+
+
+JS:
+
+let tugma = document.getElementById('btn');
+
+tugma.addEventListener('click', function() {
+  alert('Bu addEventListener orqali ishladi!');
+});
+
+
+🔹 Bu usul:
+
+Kodni HTML’dan ajratadi;
+
+Bir elementga bir nechta hodisani biriktirish mumkin;
+
+Katta loyihalarda eng yaxshi yondashuv hisoblanadi.
+
+===========================================
+
+// 1️⃣ document.querySelector('.myDiv')
+
+// Bu qator:
+
+// HTML sahifada .myDiv nomli klassga ega bo‘lgan birinchi elementni topadi.
+
+// Topilgan elementni myElement degan o‘zgaruvchiga saqlaydi.
+
+// 🔹 Misol uchun:
+
+// <div class="myDiv">
+//   <p>Oldingi matn</p>
+// </div>
+
+// Shu <div> endi myElement orqali boshqariladi.
+
+// 2️⃣ myElement.innerHTML = '<h1> New Heading</h1><p> Some new text.</p>';
+
+// Bu qator:
+
+// myElement ichidagi barcha eski HTML kodni o‘chiradi.
+
+// O‘rniga yangisini qo‘yadi:
+
+// <h1> New Heading</h1>
+// <p> Some new text.</p>
+
+// Ya’ni endi <div> shunday ko‘rinadi 👇
+
+// <div class="myDiv">
+//   <h1> New Heading</h1>
+//   <p> Some new text.</p>
+// </div>
+
+//  1️⃣ let a = document.getElementById('text');
+
+// 🔹 Ma’nosi:
+// HTML’da id="text" bo‘lgan elementni topadi va a o‘zgaruvchiga saqlaydi.
+
+// 🔹 Misol:
+
+// <p id="text">Bu matn</p>
+
+// let a = document.getElementById('text');
+// console.log(a); // <p id="text">Bu matn</p>
+
+// 🧠 Eslab qol:
+
+// id — sahifada yagona bo‘lishi kerak.
+
+// getElementById faqat bitta elementni qaytaradi.
+
+// 2️⃣ let b = document.getElementsByClassName('text');
+
+// 🔹 Ma’nosi:
+// HTML’da class="text" bo‘lgan barcha elementlarni topadi.
+
+// 🔹 Misol:
+
+// <p class="text">Matn 1</p>
+// <p class="text">Matn 2</p>
+
+// let b = document.getElementsByClassName('text');
+// console.log(b); // HTMLCollection(2) [p.text, p.text]
+
+// 🔹 Natija: HTMLCollection (massivga o‘xshash to‘plam).
+// Elementlarga kirish uchun:
+
+// b[0].style.color = 'red';
+// b[1].style.color = 'blue';
+
+// 3️⃣ let c = document.getElementsByTagName('h1');
+
+// 🔹 Ma’nosi:
+// Sahifadagi barcha <h1> teglarini topadi.
+
+// 🔹 Misol:
+
+// <h1>Salom</h1>
+// <h1>Dunyo</h1>
+
+// let c = document.getElementsByTagName('h1');
+// console.log(c); // HTMLCollection(2) [h1, h1]
+
+// 🔹 Natija: yana HTMLCollection, ya’ni ko‘plikda.
+// c[0].textContent — birinchi <h1> matnini oladi.
+
+// 4️⃣ let e = document.querySelectorAll('.text');
+
+// 🔹 Ma’nosi:
+// CSS uslubida yozilgan .text klassli barcha elementlarni topadi.
+
+// 🔹 Misol:
+
+// <p class="text">Matn A</p>
+// <p class="text">Matn B</p>
+
+// let e = document.querySelectorAll('.text');
+// console.log(e); // NodeList(2) [p.text, p.text]
+
+// 🧠 Farqi:
+
+// getElementsByClassName → HTMLCollection qaytaradi (jonli, ya’ni sahifa o‘zgarsa, o‘zgaradi).
+
+// querySelectorAll → NodeList qaytaradi (statik, sahifa o‘zgarsa yangilanmaydi).
+
+// 5️⃣ let d = document.querySelector('h1').textContent;
+
+// 🔹 Ma’nosi:
+// Sahifadagi birinchi <h1> elementni topib, uning matnini oladi.
+
+// 🔹 Misol:
+
+// <h1>Salom, dunyo!</h1>
+
+// let d = document.querySelector('h1').textContent;
+// console.log(d); // "Salom, dunyo!"
+
+// 🧠 textContent — element ichidagi matnni o‘qish yoki o‘zgartirish uchun ishlatiladi (HTML teglarsiz).
+
+// 6️⃣ document.querySelector('h1').innerText = 'salom dunyo';
+
+// 🔹 Ma’nosi:
+// Birinchi <h1> elementni topadi va uning ko‘rinadigan matnini 'salom dunyo' ga o‘zgartiradi.
+
+// 🔹 Misol:
+
+// <h1>Oldingi matn</h1>
+
+// document.querySelector('h1').innerText = 'salom dunyo';
+
+// 🔹 Natija:
+
+// <h1>salom dunyo</h1>
+
+// 🧠 innerText vs textContent:
+
+// Xususiyat	Tavsif
+// innerText	Faqat ko‘rinadigan matnni o‘zgartiradi (CSS ta’sir qiladi)
+// textContent	Element ichidagi barcha matnni oladi (yashirin bo‘lsa ham)
+// 🧩 Xulosa:
+// Kod	Ma’nosi	Qaytargan narsa
+// getElementById('id')	ID bo‘yicha bitta element	Element
+// getElementsByClassName('class')	Klass bo‘yicha elementlar	HTMLCollection
+// getElementsByTagName('tag')	Teg nomi bo‘yicha	HTMLCollection
+// querySelector('selector')	CSS selector bo‘yicha birinchi element	Element
+// querySelectorAll('selector')	CSS selector bo‘yicha barcha elementlar	NodeList
+// .textContent	Element matnini olish/o‘zgartirish	Matn
+// .innerText	Faqat ko‘rinadigan matnni olish/o‘zgartirish	Matn
+
+===========================================
+
+Quyidagi hodisalar (eventlar) — sichqoncha (mouse) bilan bog‘liq bo‘lgan voqealar, ularning har birini senga oddiy o‘zbek tilida tushuntirib berdim 👇
+
+Hodisa nomi	Inglizcha tavsif	O‘zbekcha tarjima va tushuntirish
+click	Fired when an element is clicked.	Element bosilganda ishga tushadi. Ya’ni sichqoncha bilan bitta marta bosgan paytda.
+dblclick	Fired when an element is double-clicked.	Element ikki marta bosilganda (double click) ishga tushadi.
+mousedown	Fired when a mouse button is pressed down over an element.	Sichqoncha tugmasi bosilganda, lekin hali qo‘yib yuborilmagan holatda ishga tushadi.
+mouseup	Fired when a mouse button is released over an element.	Sichqoncha tugmasi qo‘yib yuborilganda ishga tushadi. (Bosib turilganidan keyin.)
+mouseover	Fired when the mouse pointer enters an element's area.	Sichqoncha kursori element ustiga kirganda ishga tushadi.
+mouseout	Fired when the mouse pointer leaves an element's area.	Kursor element ustidan chiqib ketganda ishga tushadi.
+mousemove	Fired when the mouse pointer is moved while over an element.	Kursor element ustida harakatlanayotganda doimiy ravishda ishga tushadi.
+contextmenu	Fired when the right mouse button is clicked (or context menu is requested).	Sichqonchaning o‘ng tugmasi bosilganda (ya’ni kontekst menyu ochilganda) ishga tushadi.
+
+🧠 Qisqacha eslab qolish uchun:
+
+click → bitta marta bosish
+
+dblclick → ikki marta bosish
+
+mousedown → bosish boshlangan payt
+
+mouseup → bosish tugagan payt
+
+mouseover → element ustiga kirish
+
+mouseout → element ustidan chiqish
+
+mousemove → kursor harakati
+
+contextmenu → o‘ng tugma bosilganda
+
+====================================
+
+// document html o'zi
+
+// document.getElementById htmldan id orqali chaqirish
+// document.getElementsByClassName htmldan class  orqali  hammasini chaqirish
+// document.getElementsByTagName htmldan teg nomi orqali chaqirish
+
+// document.querySelector htmldan faqat bittasini id,class,tagname orqali chaqirish
+
+// document.querySelectorAll htmldan hammasini id,class,tagname orqali chaqirish
+
+// textContent chaqirilgan tegni matnini olish
+// innerText chaqirilgan tegni matnini o'zgartirish
+// innerHtml htmlni o'zgartirish
+
+// onclick bosilgan vaqtda js dagi funksiyani ishga tushuradi
+
+// addEventListener aytilgan hodisa vaqtida funksiyani ishga tushuradi

@@ -1,0 +1,251 @@
+<!-- <!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snake head — to'rtburchak bo'ylab harakatlanadi</title>
+  <style>
+    html,body{height:100%;margin:0;display:flex;align-items:center;justify-content:center;background:#0b0b0b;color:#eee;font-family:system-ui,Segoe UI,Roboto}
+    canvas{background:#111;box-shadow:0 6px 30px rgba(0,0,0,.6);border-radius:8px}
+    .info{position:fixed;left:16px;top:16px;font-size:13px;opacity:.9}
+    .controls{position:fixed;right:16px;top:16px;background:rgba(255,255,255,.03);padding:8px;border-radius:8px;font-size:13px}
+    input[type=range]{width:120px}
+  </style>
+</head>
+<body>
+  <!-- <div class="info">Snake boshini to'rtburchak ichida perimeter bo'ylab aylantiradi — tezlikni sozlang</div> -->
+  <!-- <div class="controls">
+    Tezlik: <input id="speedRange" type="range" min="20" max="600" value="180"> <span id="speedVal">180</span> px/s
+    <br>
+    Ichki oraliq (padding): <input id="padRange" type="range" min="20" max="200" value="60"> <span id="padVal">60</span> px
+  </div>
+  <canvas id="c" width="800" height="500"> <img src="IMG/snake.jpg" alt=""></canvas>
+
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    const speedRange = document.getElementById('speedRange');
+    const speedVal = document.getElementById('speedVal');
+    const padRange = document.getElementById('padRange');
+    const padVal = document.getElementById('padVal');
+
+    let last = performance.now();
+    let speed = Number(speedRange.value); // pixels per second
+    let padding = Number(padRange.value);
+
+    speedRange.addEventListener('input', ()=>{ speed = Number(speedRange.value); speedVal.textContent = speed; });
+    padRange.addEventListener('input', ()=>{ padding = Number(padRange.value); padVal.textContent = padding; initPath(); });
+
+    // rectangle (outer) is whole canvas; we'll make inner rectangle inset by `padding`
+    let pathSegments = []; // each segment: {dx,dy,len,angle}
+    let totalLen = 0;
+
+    // snake head state
+    let dist = 0; // distance along path
+    let direction = 1; // 1 clockwise, -1 counter
+    const headSize = 18;
+
+    function initPath(){
+      const x = padding;
+      const y = padding;
+      const w = canvas.width - padding*2;
+      const h = canvas.height - padding*2;
+      // Order: top edge (left->right), right edge (top->bottom), bottom (right->left), left (bottom->top)
+      const segs = [
+        {dx: 1, dy: 0, len: w},
+        {dx: 0, dy: 1, len: h},
+        {dx: -1, dy: 0, len: w},
+        {dx: 0, dy: -1, len: h}
+      ];
+      // compute angle for drawing
+      pathSegments = segs.map(s=>({...s, angle: Math.atan2(s.dy, s.dx)}));
+      totalLen = pathSegments.reduce((a,b)=>a+b.len,0);
+      // wrap dist
+      dist = ((dist % totalLen) + totalLen) % totalLen;
+    }
+
+    function getPosAtDistance(d){
+      // d between 0 and totalLen
+      let x = padding, y = padding; // starting corner: top-left of inner rect
+      let rem = d;
+      for(const s of pathSegments){
+        if(rem <= s.len){
+          return {x: x + s.dx*rem, y: y + s.dy*rem, angle: s.angle};
+        }
+        // move to next corner
+        x += s.dx * s.len;
+        y += s.dy * s.len;
+        rem -= s.len;
+      }
+      // if exact end
+      return {x: padding, y: padding, angle: pathSegments[0].angle};
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      // draw inner rectangle path
+      ctx.save();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#2ecc71';
+      ctx.setLineDash([6,6]);
+      ctx.strokeRect(padding+0.5, padding+0.5, canvas.width - padding*2 -1, canvas.height - padding*2 -1);
+      ctx.restore();
+
+      // draw head at current pos
+      const pos = getPosAtDistance(dist);
+      drawHead(pos.x, pos.y, pos.angle);
+
+      // small guide: start corner
+      ctx.fillStyle = 'rgba(255,255,255,0.03)';
+      ctx.fillRect(padding, padding, canvas.width - padding*2, canvas.height - padding*2);
+    }
+
+    function drawHead(cx, cy, angle){
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(angle);
+      // draw rectangle centered so it sits on the path
+      ctx.fillStyle = '#ffd166';
+      ctx.fillRect(-headSize/2, -headSize/2, headSize, headSize);
+      // nose/eye to indicate forward direction
+      ctx.fillStyle = '#222';
+      ctx.fillRect(headSize/4, -headSize/6, headSize/6, headSize/3);
+      ctx.restore();
+    }
+
+    function update(dt){
+      // advance distance along path by speed * dt * direction
+      dist += direction * speed * dt;
+      // wrap
+      dist = ((dist % totalLen) + totalLen) % totalLen;
+    }
+
+    function loop(now){
+      const dt = (now - last) / 1000;
+      last = now;
+      update(dt);
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    // allow click to toggle direction
+    canvas.addEventListener('click', ()=>{ direction *= -1; });
+
+    // resize canvas responsively
+    function resize(){
+      // maintain CSS pixel ratio
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(Math.max(300, window.innerWidth * 0.75));
+      canvas.height = Math.floor(Math.max(240, window.innerHeight * 0.6));
+      canvas.style.width = canvas.width + 'px';
+      canvas.style.height = canvas.height + 'px';
+      initPath();
+    }
+
+    window.addEventListener('resize', ()=>{ resize(); });
+
+    // init
+    resize();
+    requestAnimationFrame(loop);
+
+    // helpful instructions in console
+    console.log("Click canvas to toggle clockwise/counter-clockwise. Use sliders to change speed and padding.");
+  </script>
+</body>
+</html>  -->
+
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kvadrat harakati</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #eee;
+      font-family: sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 3px solid #01f366;
+      border-radius: 10px;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .box {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #f1c40f;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="container">
+    <div class="box" id="box"></div>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+    const container = document.getElementById('container');
+
+    let x = 0;
+    let y = 0;
+    let direction = 'right';
+    const speed = 1; // piksel harakat tezligi
+
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+    const boxSize = box.clientWidth;
+
+    function moveBox() {
+      if (direction === 'right') {
+        x += speed;
+        if (x >= containerWidth - boxSize) {
+          x = containerWidth - boxSize;
+          direction = 'down';
+        }
+      } else if (direction === 'down') {
+        y += speed;
+        if (y >= containerHeight - boxSize) {
+          y = containerHeight - boxSize;
+          direction = 'left';
+        }
+      } else if (direction === 'left') {
+        x -= speed;
+        if (x <= 0) {
+          x = 0;
+          direction = 'up';
+        }
+      } else if (direction === 'up') {
+        y -= speed;
+        if (y <= 0) {
+          y = 0;
+          direction = 'right';
+        }
+      }
+
+      box.style.left = x + 'px';
+      box.style.top = y + 'px';
+
+      requestAnimationFrame(moveBox);
+    }
+
+    moveBox();
+  </script>
+
+</body>
+</html>

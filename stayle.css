@@ -846,4 +846,177 @@ body {
 }
 .container .section-6 .navbar .text-bottom .btn1 button:hover {
   background: #f0f0f0;
+}
+.container .section-6 .cards-bottom {
+  width: 100%;
+  height: 322px;
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+  margin-left: 100px;
+  gap: 50px;
+}
+.container .section-6 .cards-bottom .product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 270px;
+  height: 350px;
+}
+.container .section-6 .cards-bottom .product-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+.container .section-6 .cards-bottom .product-card .product-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fafafa;
+}
+.container .section-6 .cards-bottom .product-card .product-image img {
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+.container .section-6 .cards-bottom .product-card .product-image .discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: #fff;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.container .section-6 .cards-bottom .product-card .product-image .icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.container .section-6 .cards-bottom .product-card .product-image .icons .icon-btn {
+  background: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+.container .section-6 .cards-bottom .product-card .product-image .icons .icon-btn:hover {
+  background: #f0f0f0;
+}
+.container .section-6 .cards-bottom .product-card h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0 5px;
+}
+.container .section-6 .cards-bottom .product-card .price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #e63946;
+}
+.container .section-6 .cards-bottom .product-card .price span {
+  font-size: 14px;
+  color: #888;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+.container .section-6 .cards-bottom .product-card .rating {
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+  color: #666;
+}
+.container .section-6 .cards-bottom .product-card .rating img {
+  height: 16px;
+}
+.container .middle {
+  width: 100%;
+  display: flex;
+  align-items: flex;
+  justify-content: center;
+}
+.container .middle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 234px;
+  height: 56px;
+  border: none;
+  background-color: #db4444;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  color: #fafafa;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container .middle button:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #de3a3a;
+}
+.container .section-7 {
+  margin-top: 104px;
+  margin-left: 100px;
+}
+.container .section-7 .section-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.container .section-7 .section-top .box {
+  width: 20px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #db4444;
+}
+.container .section-7 .section-top p {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 16px;
+  color: #db4444;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.container .section-7 .section-top h1 {
+  font-family: Inter;
+  font-weight: 600;
+  font-style: Semi Bold;
+  font-size: 36px;
+  color: #000000;
+  line-height: 48px;
+  letter-spacing: 4%;
+  margin-top: 20px;
+}
+.container .section-7 .section-img {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 100%;
+  margin-top: 149px;
+}
+.container .section-7 .section-img .left {
+  width: 570px;
+  height: 600px;
+  background-color: #000000;
+}
+.container .section-7 .section-img .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=stayle.css.map */
